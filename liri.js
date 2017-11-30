@@ -93,6 +93,17 @@ function twitterCall () {
   }
 });
 }
+var fs = require("fs");
+function doWhat () {
+    fs.readFile("./random.txt", "utf8", function(err, data) {
+        if (err) {
+            return console.log(error);
+          }
+        var split = data.split(",");
+        spotifyInput = split[1];
+        spotifyCall();
+    });
+}
 // twitterCall();
 // switch statements
 switch(command){
@@ -105,5 +116,7 @@ switch(command){
     case "movie-this":
     movieCall();
     break;
-    // case "do-what-it-says":  
+    case "do-what-it-says": 
+    doWhat();
+    break; 
 }
